@@ -1,12 +1,12 @@
 <?php
 /**
  * Magiccart 
- * @category 	Magiccart 
- * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
- * @license 	http://www.magiccart.net/license-agreement.html
+ * @category    Magiccart 
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-06-08 15:01:42
+ * @@Modify Date: 2020-04-24 15:01:42
  * @@Function:
  */
 
@@ -22,6 +22,14 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
     // protected $_filesystem;
     // protected $_directory;
 
+    /**
+    * @var \Magento\Backend\Model\UrlInterface
+    */
+    protected $backendUrl;
+
+    /**
+    * @var \Magiccart\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory
+    */
     protected $_testimonialCollectionFactory;
     protected $_testimonials = null;
     protected $_attribute = null;
@@ -30,6 +38,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Image\AdapterFactory $imageFactory,
         // \Magento\Framework\Filesystem $filesystem,
+        \Magento\Backend\Model\UrlInterface $backendUrl,
         \Magiccart\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory $testimonialCollectionFactory,
         array $data = []
     ) {
@@ -37,7 +46,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
         $this->_imageFactory = $imageFactory;
         // $this->_filesystem = $filesystem;
         // $this->_directory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
-
+        $this->backendUrl = $backendUrl;
         $this->_testimonialCollectionFactory = $testimonialCollectionFactory;
 
         $this->_sysCfg= (object) $context->getScopeConfig()->getValue(
@@ -51,28 +60,61 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
     protected function _construct()
     {
 
-		$data = $this->_sysCfg->general;
-		if($data['slide']){
-			$data['vertical-Swiping'] = $data['vertical'];
+        $data = $this->_sysCfg->general;
+        if($data['slide']){
+            $data['vertical-Swiping'] = $data['vertical'];
             $breakpoints = $this->getResponsiveBreakpoints();
             $responsive = '[';
             $num = count($breakpoints);
             foreach ($breakpoints as $size => $opt) {
-            	$item = (int) $data[$opt];
-            	$responsive .= '{"breakpoint": "'.$size.'", "settings": {"slidesToShow": "'.$item.'"}}';
+                $item = (int) $data[$opt];
+                $responsive .= '{"breakpoint": "'.$size.'", "settings": {"slidesToShow": "'.$item.'"}}';
                 $num--;
-            	if($num) $responsive .= ', ';
+                if($num) $responsive .= ', ';
             }
             $responsive .= ']';
             $data['slides-To-Show'] = $data['visible'];
             $data['swipe-To-Slide'] = 'true';
-			$data['responsive'] = $responsive;
-		}
+            $data['responsive'] = $responsive;
+        }
 
         $this->addData($data);
 
         parent::_construct();
 
+    }
+
+    public function getAdminUrl($adminPath, $routeParams=[], $storeCode = 'default' ) 
+    {
+        $routeParams[] = [ '_nosid' => true, '_query' => ['___store' => $storeCode]];
+        return $this->backendUrl->getUrl($adminPath, $routeParams);
+    }
+
+    public function getQuickedit()
+    {
+        // $testimonials = $this->getTestimonials();
+        // if($testimonials){
+            $routeParams = [
+                // 'testimonial_id' => $id
+            ];
+            $class      = 'Testimonial'; //basename(__FILE__, ".php");
+            $adminPath  = 'testimonial/index/index';
+            $editUrl    = $this->getAdminUrl($adminPath, $routeParams);
+            $moduleName = $this->getModuleName();
+            $moduleName = str_replace('_', ' > ', $moduleName);
+            $quickedit  = [
+                [
+                    'title' => __('%1 > %2 :', $moduleName, $class),
+                    'url'   => $editUrl
+                ],
+                [
+                    'title' => __('Edit'),
+                    'url'   => $editUrl
+                ]
+            ];
+        // }
+
+        return $quickedit;      
     }
 
     public function getTestimonials()
