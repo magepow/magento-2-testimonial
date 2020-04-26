@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="testimonial_default"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magiccart\Testimonial\Block\Post\View" name="testimonial.post" template="post/view.phtml">
+            	<block class="Magiccart\Testimonial\Block\Post\Info" name="testimonial.post.info" template="post/info.phtml" />
+                <action method="setPostInfoBlockName">
+                    <argument name="name" xsi:type="string">testimonial.post.info</argument>
+                </action>
+                <block class="\Magento\Framework\View\Element\Text\ListText" name="testimonial.post.bottom" template="sidebar.phtml">
+                    <block class="Magiccart\Testimonial\Block\Post\View\RelatedPosts" name="testimonial.post.relatedposts" as="relatedposts"  template="Magiccart_Testimonial::post/view/relatedposts.phtml" />
+                    <block class="Magiccart\Testimonial\Block\Post\View\RelatedProducts" name="testimonial.post.relatedproducts" as="relatedproducts"  template="Magiccart_Testimonial::post/view/relatedproducts.phtml" />
+                    <block class="Magiccart\Testimonial\Block\Post\View\Comments" name="testimonial.post.comments" template="post/view/comments.phtml" />
+                    <block class="Magento\Framework\View\Element\Template" name="testimonial.post.js" as="js"  template="Magiccart_Testimonial::post/view/js.phtml" />
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

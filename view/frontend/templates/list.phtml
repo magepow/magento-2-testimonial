@@ -1,0 +1,81 @@
+<?php
+/**
+ * Magiccart 
+ * @category    Magiccart 
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license     http://www.magiccart.net/license-agreement.html
+ * @Author: Magiccart<team.magiccart@gmail.com>
+ * @@Create Date: 2014-07-31 15:41:21
+ * @@Modify Date: 2014-09-03 22:53:29
+ * @@Function:
+ */
+ ?>
+<?php if(!$this->config['enabled']) return;?>
+<?php $title = isset($this->config['title']) ? $this->config['title'] : ''; ?>
+<?php $varchar = isset($this->config['varchar']) ? $this->config['varchar'] : 500; ?>
+<?php $selector     =   md5(rand()); //rand(0,666666); ?>
+
+<?php $testimonials = $this->_getTestimonial();?>
+<div class="customer-testimonials products-list">
+    <div class="page-title">
+        <h1><?php echo $this->__($title);?></h1>
+        <?php //if($this->config['write_testimonial']):?>
+        <div class="submit-testimonial">
+                <button class="button" onclick="setLocation('<?php echo $this->getFormUrl(); ?>')">
+                    <span>
+                        <span>
+                            <?php echo $this->__('Write Your Testimonial');?>                  
+                        </span>
+                    </span>
+                </button>
+        </div>
+        <?php //endif ?>
+    </div>
+    <?php echo $this->getPagerHtml();?>
+    <?php if ($testimonials->getSize()): ?>
+        <?php $i=0; foreach ($testimonials as $testimonial):?>
+            <ul>
+                <li class="item customer-testimonials-content<?php if($i==0):?> first<?php endif;?><?php if($i==(count($testimonial)-1)):?> last<?php endif;?>" name="<?php echo $testimonial->getName(); ?>" id="<?php echo $testimonial->getName(); ?>">
+                    <div class="grid12-2">
+                        <div class="customer">
+                            <img class="avatar" src="<?php echo $this->getImage($testimonial)?>" alt="<?php echo $this->__($testimonial->getTitle()) ?>" title="<?php echo $this->__($testimonial->getTitle()) ?>" />
+                        </div>
+                    </div>
+                    <div class="grid12-10">
+					    <div class="ratings">
+                            <div class="rating-box">
+                                <div class="rating" style="width:<?php echo ceil($testimonial->getRatingSummary() * 20) ?>%;"></div>
+
+                            </div>
+                        </div>
+					    
+                        <h2 class="product-name"><?php echo $testimonial->getName(); ?></h2>
+                        
+                        <div class="testimonial_text desc">
+                        <?php 
+                            $text   = $testimonial->getText();
+                            if(strlen($text) <= $varchar):
+                        ?>
+                            &ldquo;<?php echo $text ?>&rdquo;&nbsp;
+                        <?php else: ?>
+                            &ldquo;<?php echo substr($text, 0,  $varchar); ?>&rdquo;&nbsp;...&nbsp;
+                            <a href="<?php echo $this->getUrl('testimonial/index/view/id/'.$testimonial->getTestimonialId()); ?>"><?php echo $this->__('more'); ?></a>
+                        <?php endif ?>
+                        </div>
+                        <div class="testimonial-source">
+                            <span class="testimonial-author"><?php echo $testimonial->getName(); ?></span>
+                        <span class="testimonial-date">
+                            <?php echo date('F d, Y', Mage::getModel('core/date')->gmtTimestamp($testimonial->getCreatedTime())); ?>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <?php $i++; ?>
+        <?php endforeach;?>
+        <?php echo $this->getPagerHtml(); ?>
+    <?php else: ?>
+        <p class="note-msg"><?php echo $this->__('There is no testimonial submitted.'); ?></p>
+    <?php endif ?>
+</div>
+

@@ -1,0 +1,84 @@
+<?php
+/**
+ * Magiccart 
+ * @category 	Magiccart 
+ * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license 	http://www.magiccart.net/license-agreement.html
+ * @Author: Magiccart<team.magiccart@gmail.com>
+ * @@Create Date: 2014-08-04 23:36:14
+ * @@Modify Date: 2016-03-29 14:43:39
+ * @@Function:
+ */
+?>
+<div class="testimonial create">
+    <div class="page-title"><h1><?php echo __('Write Testimonial'); ?></h1></div>
+    <div class="testimonial form">
+		<form id="testimonialForm" name="testimonialForm" action="<?php echo $this->_getSubmitUrl() ?>" method="post" enctype="multipart/form-data">
+        	<div class="fieldset">
+				<label for="name"><?php echo __('Contact Name') ?> <span class="required">*</span></label>
+	            <div class="input-box">
+	                <input type="text" class=" input-text required-entry" value="" name="name" id="name">
+	            </div>
+				<label for="company"><?php echo __('Company') ?></label>
+	            <div class="input-box">
+	            	<input type="text" class=" input-text" value="" name="company" id="company">
+	            </div>
+				<label for="email"><?php echo __('Email') ?> <span class="required">*</span></label>
+	            <div class="input-box">
+	            	<input type="text" class=" validate-email input-text required-entry" value="" name="email" id="email">
+	            </div>
+				<label for="website"><?php echo __('Website URL') ?></label>
+	            <div class="input-box">
+	            	<input type="text" class="validate-clean-url input-text" value="" name="website" id="website">
+	            </div>
+				<label for="image"><?php echo __('Avatar') ?></label>
+	            <div class="input-box">
+	            	<input type="file" class="input-file" name="image" id="image">
+	            </div>
+
+				<table style="width:300px">
+					<tr>
+						<td class="label"><label for="detailed_rating" class="rating"><?php echo __('Rating') ?> <span class="required">*</span></label></td>
+						<td class="value">
+							<span id="detailed_rating">
+							<div id="rating_detail">
+							<div class="product-review-box">
+								<table cellspacing="0" id="product-review-table" width="250">
+									<thead>
+									<tr>
+											<th><span class="nobr"><b><?php echo '1 star'; ?></b> </span></th>
+										<?php for ($i=2; $i<=5; $i++) { ?>
+											<th><span class="nobr"><b><?php echo $i . ' stars'; ?></b> </span></th>
+										<?php } ?>
+									</tr>
+									</thead>
+									<tbody>
+										<tr class="odd last">
+											<?php for ($i=1; $i<=5; $i++) { ?>
+												<td<?php if($i == 5): ?> class="last"<?php endif; ?>><input type="radio" name="rating_summary" id="rating_<?php echo $i;?>" value="<?php echo $i ?>" checked="checked" /></td>
+											<?php } ?>
+										</tr>
+									</tbody>
+								</table>
+							</div></div>
+							</span>
+						</td>
+					</tr>
+				</table> 
+
+				<label for="text"><?php echo __('Text') ?> <span class="required">*</span></label>
+        		<div class="input-box">
+                     <textarea class=" required-entry textarea" cols="15" rows="2" style="width:100%;height:200px;" title="Text" name="text" id="text"></textarea>
+                </div>
+	            <div class="buttons-set">
+	                <button class="button" title="Submit Review" type="submit"><span><span><?php echo __('Submit Testimonial') ?></span></span></button>
+	            </div>
+	        </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var testimonialForm = new VarienForm('testimonialForm', true);
+//]]>
+</script>

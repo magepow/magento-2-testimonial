@@ -1,0 +1,40 @@
+<?php
+if(!$this->getEnabled()) return;
+$selector = 'alo-content-'.rand(0,999999999);
+$testimonials = $this->getTestimonials();
+if(!count($testimonials)) return;
+?>
+<div class="<?php /* @escapeNotVerified */ echo $selector ?>">
+    <div class="testimonial"
+        data-fade='true'
+    <?php foreach ($this->getFrontendCfg() as $opt) :?>
+        data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>'
+    <?php endforeach;?>  
+    >
+        <?php $i=0; foreach ($testimonials as $testimonial) :?>
+			<div class="item">
+				<div class="customer">
+					<a href="<?php // echo $this->getUrlTestimonial($testimonial) ?>">
+						<img class="avatar img-responsive" src="<?php echo $this->escapeUrl($this->getImage($testimonial))?>" alt="<?php echo __($this->escapeHtml($testimonial->getName())) ?>" title="<?php echo __($this->escapeHtml($testimonial->getName())) ?>" />
+					</a>
+				</div>
+				<div class="testimonial_text">
+                    <?php echo $this->getTitle() ? '<h2 class="title item">' . '<span>' . $this->escapeHtml($this->getTitle()) . '</span>' . '</h2>' : '' ?>
+					<p class="name title-name"><?php echo $this->escapeHtml($testimonial->getName()); ?></p>
+					<div class="content"><?php echo $this->escapeHtml($testimonial->getText()); ?></div>
+				</div>
+			</div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'magiccart/slick',
+        'alothemes',
+        ], function($, slick, alothemes){
+            var testimonial  = $('.<?php echo $selector ?> .testimonial');
+            if(testimonial.length) $('head').append(magicproduct(testimonial, '.item'));
+    });
+</script>
