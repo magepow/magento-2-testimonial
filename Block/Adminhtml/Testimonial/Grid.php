@@ -78,16 +78,16 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareColumns()
     {
-        // $this->addColumn(
-        //     'testimonial_id',
-        //     [
-        //         'header' => __('Testimonial ID'),
-        //         'type' => 'number',
-        //         'index' => 'testimonial_id',
-        //         'header_css_class' => 'col-id',
-        //         'column_css_class' => 'col-id',
-        //     ]
-        // );
+        $this->addColumn(
+            'testimonial_id',
+            [
+                'header' => __('Testimonial ID'),
+                'type' => 'number',
+                'index' => 'testimonial_id',
+                'header_css_class' => 'col-id',
+                'column_css_class' => 'col-id',
+            ]
+        );
 
         $this->addColumn(
             'name',
