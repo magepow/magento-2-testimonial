@@ -128,6 +128,15 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldset->addField('job', 'text',
+            [
+                'label' => __('Job'),
+                'title' => __('Job'),
+                'name' => 'job',
+                'required' => true,
+            ]
+        );
+
         $fieldset->addField('email', 'text',
             [
                 'label' => __('Email'),

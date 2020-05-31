@@ -10,9 +10,9 @@
  * @@Function:
  */
 
-namespace Magiccart\Magicproduct\Controller\Index;
+namespace Magiccart\Testimonial\Controller\Index;
 
-class Index extends \Magiccart\Magicproduct\Controller\Index
+class Index extends \Magiccart\Testimonial\Controller\Index
 {
     public function execute()
     {

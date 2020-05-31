@@ -1,84 +1,148 @@
 <?php
-/**
- * Magiccart 
- * @category 	Magiccart 
- * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
- * @license 	http://www.magiccart.net/license-agreement.html
- * @Author: Magiccart<team.magiccart@gmail.com>
- * @@Create Date: 2014-08-04 23:36:14
- * @@Modify Date: 2016-03-29 14:43:39
- * @@Function:
- */
+
+if($this->getConfig('customers_submit'))
+{
+    $customer_session = $this->getCustomerSession()->getCustomer();
+	if($this->getConfig('allowGuest')) {
+		$show_submit = true;
+	}else {
+		if($customer_session->getName()) {
+			$show_submit = true;
+		}else {
+            $show_submit = true;
+		}
+    }
+}else {
+	$show_submit = false;
+}
+	if($show_submit==true):
 ?>
-<div class="testimonial create">
-    <div class="page-title"><h1><?php echo __('Write Testimonial'); ?></h1></div>
-    <div class="testimonial form">
-		<form id="testimonialForm" name="testimonialForm" action="<?php echo $this->_getSubmitUrl() ?>" method="post" enctype="multipart/form-data">
-        	<div class="fieldset">
-				<label for="name"><?php echo __('Contact Name') ?> <span class="required">*</span></label>
-	            <div class="input-box">
-	                <input type="text" class=" input-text required-entry" value="" name="name" id="name">
-	            </div>
-				<label for="company"><?php echo __('Company') ?></label>
-	            <div class="input-box">
-	            	<input type="text" class=" input-text" value="" name="company" id="company">
-	            </div>
-				<label for="email"><?php echo __('Email') ?> <span class="required">*</span></label>
-	            <div class="input-box">
-	            	<input type="text" class=" validate-email input-text required-entry" value="" name="email" id="email">
-	            </div>
-				<label for="website"><?php echo __('Website URL') ?></label>
-	            <div class="input-box">
-	            	<input type="text" class="validate-clean-url input-text" value="" name="website" id="website">
-	            </div>
-				<label for="image"><?php echo __('Avatar') ?></label>
-	            <div class="input-box">
-	            	<input type="file" class="input-file" name="image" id="image">
-	            </div>
-
-				<table style="width:300px">
-					<tr>
-						<td class="label"><label for="detailed_rating" class="rating"><?php echo __('Rating') ?> <span class="required">*</span></label></td>
-						<td class="value">
-							<span id="detailed_rating">
-							<div id="rating_detail">
-							<div class="product-review-box">
-								<table cellspacing="0" id="product-review-table" width="250">
-									<thead>
-									<tr>
-											<th><span class="nobr"><b><?php echo '1 star'; ?></b> </span></th>
-										<?php for ($i=2; $i<=5; $i++) { ?>
-											<th><span class="nobr"><b><?php echo $i . ' stars'; ?></b> </span></th>
-										<?php } ?>
-									</tr>
-									</thead>
-									<tbody>
-										<tr class="odd last">
-											<?php for ($i=1; $i<=5; $i++) { ?>
-												<td<?php if($i == 5): ?> class="last"<?php endif; ?>><input type="radio" name="rating_summary" id="rating_<?php echo $i;?>" value="<?php echo $i ?>" checked="checked" /></td>
-											<?php } ?>
-										</tr>
-									</tbody>
-								</table>
-							</div></div>
-							</span>
-						</td>
-					</tr>
-				</table> 
-
-				<label for="text"><?php echo __('Text') ?> <span class="required">*</span></label>
-        		<div class="input-box">
-                     <textarea class=" required-entry textarea" cols="15" rows="2" style="width:100%;height:200px;" title="Text" name="text" id="text"></textarea>
+<div class="alo-testimonial-submit">
+    <form action="<?php echo $block->escapeUrl($block->getFormAction()) ?>" method="post" id="form-validate"
+        enctype="multipart/form-data" class="form" data-mage-init='{"validation":{}}'>
+        <fieldset class="fieldset">
+            <input name="store_id" id="store_id" type="hidden" value="<?php echo $this->getStoreId();?>" />
+            <input name="status" id="status" type="hidden"
+                value="<?php if($this->getConfig('approve_testimonials')) echo '1'; else echo '3'; ?>" />
+            <div class="field field-name required">
+                <label for="name" class="label">
+                    <span><?php echo __('Your Name');?></span>
+                </label>
+                <div class="input-box">
+                    <input name="name" id="name" class="input-text required-entry" type="text"
+                        value="<?php echo $customer_session->getName();?>" />
                 </div>
-	            <div class="buttons-set">
-	                <button class="button" title="Submit Review" type="submit"><span><span><?php echo __('Submit Testimonial') ?></span></span></button>
-	            </div>
-	        </div>
-        </form>
-    </div>
+            </div>
+            <div class="field field-email required">
+                <label for="email" class="label">
+                    <?php echo __('Your Email'); ?>
+                </label>
+                <div class="input-box">
+                    <input name="email" id="email" class="input-text required-entry validate-email" type="text"
+                        value="<?php echo $customer_session->getEmail();?>" />
+                </div>
+            </div>
+            <div class="field field-website required">
+                <label for="website" class="label">
+                    <?php echo __('Your Website'); ?>
+                </label>
+                <div class="input-box">
+                    <input name="website" id="website" type="text" class="input-text required-entry" />
+                </div>
+            </div>
+            <div class="field field-company required">
+                <label for="company" class="label">
+                    <?php echo __('Your Company');?>
+                </label>
+                <div class="input-box">
+                    <input name="company" id="company" type="text" class="input-text required-entry" />
+                </div>
+            </div>
+            <div class="field field-job required">
+                <label for="job" class="label">
+                    <?php echo __('Your job');?>
+                </label>
+                <div class="input-box">
+                    <input type="text" name="job" id="job" class="input-text required-entry">
+                </div>
+            </div>
+            <div class="field field-avatar required">
+                <label for="image" class="label">
+                    <?php echo __('Your Avatar'); ?>
+                </label>
+                <div class="input-box">
+                    <input name="image" id="image" type="file" value="" class="required-entry" />
+                </div>
+            </div>
+            <div class="field field-testimonial required">
+                <label for="testimonial" class="label">
+                    <?php echo __('Your Testimonial'); ?>
+                </label>
+                <div class="std-input-box">
+                    <textarea name="text" id="testimonial" class="required-entry" rows="4" cols="50"></textarea>
+                </div>
+            </div>
+            <div class="field field-rating">
+                <div class="std-input-box">                  
+                    <fieldset class="field required review-field-ratings">
+                        <div class="control">
+                            <div class="nested" id="product-review-table">
+                                <div class="field choice review-field-rating required">
+                                    <label class="label" id="Value_rating_label"><?php echo __('Your Rating') ?></label>
+                                    <div class="control review-control-vote">
+                                        <input type="radio" name="rating_summary" id="Value_1" value="1" class="radio" data-validate="{'validate-one-required-by-name':true}" aria-labelledby="Value_rating_label Value_1_label" aria-required="true">
+                                        <label class="rating-1" for="Value_1" title="1 star" id="Value_1_label">
+                                            <span>1 star</span>
+                                        </label>
+                                        <input type="radio" name="rating_summary" id="Value_2" value="2" class="radio" data-validate="{'validate-one-required-by-name':true}" aria-labelledby="Value_rating_label Value_2_label" aria-required="true">
+                                        <label class="rating-2" for="Value_2" title="2 stars" id="Value_2_label">
+                                            <span>2 stars</span>
+                                        </label>
+                                        <input type="radio" name="rating_summary" id="Value_3" value="3" class="radio" data-validate="{'validate-one-required-by-name':true}" aria-labelledby="Value_rating_label Value_3_label" aria-required="true">
+                                        <label class="rating-3" for="Value_3" title="3 stars" id="Value_3_label">
+                                            <span>3 stars</span>
+                                        </label>
+                                        <input type="radio" name="rating_summary" id="Value_4" value="4" class="radio" data-validate="{'validate-one-required-by-name':true}" aria-labelledby="Value_rating_label Value_4_label" aria-required="true">
+                                        <label class="rating-4" for="Value_4" title="4 stars" id="Value_4_label">
+                                            <span>4 stars</span>
+                                        </label>
+                                        <input type="radio" name="rating_summary" id="Value_5" value="5" class="radio" data-validate="{'validate-one-required-by-name':true}" aria-labelledby="Value_rating_label Value_5_label" aria-required="true">
+                                        <label class="rating-5" for="Value_5" title="5 stars" id="Value_5_label">
+                                            <span>5 stars</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="rating-option-error-message-container"></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" title="<?php echo __('Submit') ?>" class="action submit primary">
+                        <span><?php echo __('Submit') ?></span>
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>
-<script type="text/javascript">
-//<![CDATA[
-    var testimonialForm = new VarienForm('testimonialForm', true);
-//]]>
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#form-validate');
+        dataForm.mage('validation', {
+            errorPlacement: function(error, element) {
+                if (element.attr('data-validate') && element.attr('data-validate').indexOf('validate-one-required-by-name') >= 0) {
+                    error.appendTo('#rating-option-error-message-container');
+                } else {
+                    element.after(error);
+                }
+            },
+        });
+    });
 </script>
+<?php endif; ?>

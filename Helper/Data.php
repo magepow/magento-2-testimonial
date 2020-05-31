@@ -13,12 +13,28 @@
 namespace Magiccart\Testimonial\Helper;
 
 // use \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\UrlInterface;
+use Magento\Customer\Model\Session;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-
+    private $customerSession;
+    private $urlInterface;
     const SECTIONS      = 'testimonial';   // module name
     const GROUPS        = 'general';        // setup general
+    const MEDIA_PATH    = 'magiccart/testimonial/';
+    public function __construct(
+        Context $context,
+        Session $customerSession
+    )
+    {
+        parent::__construct($context);
+        $this->customerSession = $customerSession;
+        $this->urlInterface = $context->getUrlBuilder();
+    }
 
     public function getConfig($cfg=null)
     {
@@ -39,5 +55,21 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $config;
     }
 
+    public function isAllowedToAddTestimonial()
+    {
+        $allowCustomersGroup = explode(",", $this->getAllowedCustomerGroups());
+        if (in_array($this->getCustomerGroup(), $allowCustomersGroup)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function redirectIfNotLoggedIn()
+    {
+        if (!$this->customerSession->isLoggedIn()) {
+            $this->customerSession->setAfterAuthUrl($this->urlInterface->getCurrentUrl());
+            $this->customerSession->authenticate();
+        }
+    }
 
 }

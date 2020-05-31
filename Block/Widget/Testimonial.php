@@ -6,7 +6,7 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2020-04-24 15:01:42
+ * @@Modify Date: 2020-05-31 15:01:42
  * @@Function:
  */
 
@@ -124,6 +124,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
             $testimonials = $this->_testimonialCollectionFactory->create()
                         ->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
                         ->addFieldToFilter('status', 1);
+            $testimonials->getSelect()->order(array('order asc', 'testimonial_id desc'));
             $this->_testimonials = $testimonials;
         }
         return $this->_testimonials;
@@ -159,7 +160,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
 
     public function getSlideOptions()
     {
-        return array('autoplay', 'arrows', 'autoplay-Speed', 'dots', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show', 'swipe-To-Slide');
+        return array('autoplay', 'arrows', 'autoplay-Speed', 'dots', 'fade', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show', 'swipe-To-Slide');
     }
 
     public function getFrontendCfg()
