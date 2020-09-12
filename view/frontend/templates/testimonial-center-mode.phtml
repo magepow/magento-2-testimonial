@@ -20,11 +20,10 @@ if(!count($testimonials)) return;
 				<div class="item">
 					<div class="inner-customer clearfix">
 						<div class="customer">
-							<a href="<?php /* echo $this->getUrlTestimonial($testimonial) */ ?>">
+							<a href="<?php echo $this->getUrl('testimonial'); ?>">
 								<img class="avatar img-responsive" src="<?php echo $this->getImage($testimonial)?>" alt="<?php echo __($testimonial->getName()) ?>" title="<?php echo __($testimonial->getName()) ?>" />
 							</a>
 						</div>
-						<!-- <?php echo $this->getImage($testimonial)?> -->
 					</div>
 					<div class="testimonial_text" style="display: none;">
 						<div class="content sub-text zoomIn"><?php echo $testimonial->getText(); ?></div>
