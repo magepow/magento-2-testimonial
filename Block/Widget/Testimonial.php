@@ -75,6 +75,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
             $responsive .= ']';
             $data['center-Mode']    = $data['center_mode'];
             $data['slides-To-Show'] = $data['visible'];
+            $data['autoplay-Speed'] = $data['autoplay_speed'];
             $data['swipe-To-Slide'] = 'true';
             $data['responsive'] = $responsive;
         }

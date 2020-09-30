@@ -31,6 +31,7 @@
                 <fade>true</fade>
                 <rows>1</rows>
                 <speed>300</speed>
+                <autoplay_speed>3000</autoplay_speed>
                 <autoplay-Speed>3000</autoplay-Speed>
                 <padding>15</padding>
                 <mobile>1</mobile>
