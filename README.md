@@ -44,7 +44,7 @@ php bin/magento setup:static-content:deploy -f
   
    To manage Testimonials, please log in: `Admin > Magiccart > Testimonial`. It might look like this:
    
-   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config46.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config46.png)
     
     
  You can add, edit or delete item in testimonial. After that, click `Save Testimonial` to finish.
