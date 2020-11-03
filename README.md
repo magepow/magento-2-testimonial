@@ -69,20 +69,17 @@ php bin/magento setup:static-content:deploy -f
     After selecting kind of page, you select which page will display testimonial widget and container(Container will be the position you want to put your widget on that page) and template
      ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config53.png)
     
-   Run the following command:
-   
+   Run the following command:  
    ```
    php bin/magento cache:clean
    ```
   ## 3. Result
-   
-    ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config45.png)
-    
-    
-   
+  ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config45.png)
+
  ## Donation
 
 If this project help you reduce time to develop, you can give me a cup of coffee :) 
+
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/paypalme/alopay)
 
