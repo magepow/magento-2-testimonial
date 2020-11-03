@@ -33,7 +33,7 @@ php bin/magento setup:static-content:deploy -f
 
   Login to magento admin, choose `stores->configuration->magiccart->testimonial`
   
-  ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/testimonial_config.jpg)
+  ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/testimonial_config.jpg)
 
   Select `yes` to enable the module.
 * "General": Config general information for testimonial such as Enabled/Disable, Title for testimonial, number per page...
