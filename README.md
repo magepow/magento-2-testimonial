@@ -7,7 +7,7 @@ Before you continue, ensure you meet the following requirements:
   * You are using a Linux or Mac OS machine. Windows is not currently supported.
   Install magento2-testimonial extension
 
-# Step 1 : Download magento2-instagram extension
+# Step 1 : Download magento2-testimonial extension
 
  ## Install via composer (recommend)
 Run the following commands in Magento 2 root folder:
@@ -33,31 +33,42 @@ php bin/magento setup:static-content:deploy -f
 
   Login to magento admin, choose `stores->configuration->magiccart->testimonial`
   
-  ![Image of magento admin config](https://github.com/magepow/magento2-instagram/blob/master/media/config.PNG)
+  ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/testimonial_config.jpg)
 
-  Select `yes` to enable the module and configure name, accesstoken of your instagram and limitation
+  Select `yes` to enable the module.
+* "General": Config general information for testimonial such as Enabled/Disable, Title for testimonial, number per page...
+* "Setting Slider":Setting style for testimonial such as testimonal slider, autoplay, speed, padding,...
+* "Setting Responsive": Setting testimonial responsive with different Screens.
   
-  ## 2. Instagram widget
+  ## 2. Manage Testimonial
   
-   Choose `content->wigdet` then add widget
+   To manage Testimonials, please log in: `Admin > Magiccart > Testimonial`. It might look like this:
    
-   ![Image of magento admin widget](https://github.com/magepow/magento2-instagram/blob/master/media/widget.PNG)
+   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config46.PNG)
     
     
-   Choose instagram widget
+ You can add, edit or delete item in testimonial. After that, click `Save Testimonial` to finish.
+ * Add new
     
-   ![Image of magento admin config widget ](https://github.com/magepow/magento2-instagram/blob/master/media/storefrontcofigwidget.PNG)
+   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/config_backend1.PNG)
+   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/config_backend2.PNG)
+   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/config_backend3.PNG)
    
-   * Theme : Select blank or luma theme
-   * Widget title : choose any title name that you want
-   * Store view : Select kind of store views you want
-   * Sorted order : Dertimine the order of the widget
+ * Fill information then click Save Testimonial to finish.
+ * To show on website, please go to `CONTENT > Elements > Widget > Add Widget`
    
-   ![Image of magento admin config widget](https://github.com/magepow/magento2-instagram/blob/master/media/storefrontcofigwidgetlayout.PNG)
+   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config47.PNG)
+   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config48.PNG)
    
-   * Display on : Select the page you want to display your instagram widget on
-   * Container : Select the position of your widget
+   Then Choose `Design Theme` and click `Continue`
    
+    ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config49.PNG)
+   This is the interface of widget instance after clicking continue, Type and Design Package have already filled so you just need to fill Widget Title, choose Store View and   Sort Order. After that, choose layout update
+    ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config50.PNG)
+     ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config51.PNG)
+    After selecting kind of page, you select which page will display testimonial widget and container(Container will be the position you want to put your widget on that page) and template
+     ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config53.PNG)
+    
    Run the following command:
    
    ```
@@ -65,7 +76,7 @@ php bin/magento setup:static-content:deploy -f
    ```
   ## 3. Result
    
-   ![Image of magento store front](https://github.com/magepow/magento2-instagram/blob/master/media/result.PNG)
+   ![Image of magento store front](https://github.com/magepow/magento2-testinomial/blob/master/media/theme_config45.PNG)
    
  ## Donation
 
