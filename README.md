@@ -44,30 +44,30 @@ php bin/magento setup:static-content:deploy -f
   
    To manage Testimonials, please log in: `Admin > Magiccart > Testimonial`. It might look like this:
    
-   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config46.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config46.PNG)
     
     
  You can add, edit or delete item in testimonial. After that, click `Save Testimonial` to finish.
  * Add new
     
-   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/config_backend1.PNG)
-   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/config_backend2.PNG)
-   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/config_backend3.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/config_backend1.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/config_backend2.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/config_backend3.PNG)
    
  * Fill information then click Save Testimonial to finish.
  * To show on website, please go to `CONTENT > Elements > Widget > Add Widget`
    
-   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config47.PNG)
-   ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config48.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config47.PNG)
+   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config48.PNG)
    
    Then Choose `Design Theme` and click `Continue`
    
-    ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config49.PNG)
+    ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config49.PNG)
    This is the interface of widget instance after clicking continue, Type and Design Package have already filled so you just need to fill Widget Title, choose Store View and   Sort Order. After that, choose layout update
-    ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config50.PNG)
-     ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config51.PNG)
+    ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config50.PNG)
+     ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config51.PNG)
     After selecting kind of page, you select which page will display testimonial widget and container(Container will be the position you want to put your widget on that page) and template
-     ![Image of magento admin config](https://github.com/magepow/magento2-testimonial/blob/master/media/theme_config53.PNG)
+     ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config53.PNG)
     
    Run the following command:
    
@@ -76,7 +76,7 @@ php bin/magento setup:static-content:deploy -f
    ```
   ## 3. Result
    
-   ![Image of magento store front](https://github.com/magepow/magento2-testinomial/blob/master/media/theme_config45.PNG)
+   ![Image of magento store front](https://github.com/magiccart/magento2-testinomial/blob/master/media/theme_config45.PNG)
    
  ## Donation
 
