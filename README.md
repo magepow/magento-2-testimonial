@@ -76,7 +76,8 @@ php bin/magento setup:static-content:deploy -f
    ```
   ## 3. Result
    
-     ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config45.png)
+    ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config45.png)
+    
     
    
  ## Donation
