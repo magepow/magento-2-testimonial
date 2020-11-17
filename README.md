@@ -138,5 +138,5 @@ If this project help you reduce time to develop, you can give me a cup of coffee
 
 * [Hire Magento Developer](https://magepow.com/hire-magento-developer.html)
 
-[![Latest Stable Version](https://poser.pugx.org/magepow/testimonial/v/stable)](https://packagist.org/packages/magepow/testimonial)
-[![Total Downloads](https://poser.pugx.org/magepow/testimonial/downloads)](https://packagist.org/packages/magepow/testimonial)
+[![Latest Stable Version](https://poser.pugx.org/magiccart/testimonial/v/stable)](https://packagist.org/packages/magiccart/testimonial)
+[![Total Downloads](https://poser.pugx.org/magiccart/testimonial/downloads)](https://packagist.org/packages/magiccart/testimonial)
