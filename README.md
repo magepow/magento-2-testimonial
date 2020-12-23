@@ -1,11 +1,5 @@
 # magento2-testimonial
-Testimonial magento 2 extension helps you to show testimonials listing on your website.
-
-Before you continue, ensure you meet the following requirements:
-
-  * You have installed magento2
-  * You should use a Linux or Mac OS machine. Windows is not currently supported.
-  Install magento2-testimonial extension
+Testimonial magento 2 extension helps you to show list of testimonials on your website. All your vistors will know what others think about your website.
 
 ## Step 1 : Download magento2-testimonial extension
 
