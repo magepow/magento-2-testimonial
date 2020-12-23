@@ -1,35 +1,25 @@
 # magento2-testimonial
-# rerequisites
+Testimonial magento 2 extension helps you to show testimonials listing on your website.
 
 Before you continue, ensure you meet the following requirements:
 
   * You have installed magento2
-  * You are using a Linux or Mac OS machine. Windows is not currently supported.
+  * You should use a Linux or Mac OS machine. Windows is not currently supported.
   Install magento2-testimonial extension
 
-# Step 1 : Download magento2-testimonial extension
+## Step 1 : Download magento2-testimonial extension
 
- ## Install via composer (recommend)
+ ### Install via composer (recommend)
 Run the following commands in Magento 2 root folder:
 ```
 composer require magiccart/testimonial
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
-  ## Install manual
-  
-* extract file from archive
-* deploy file into Magento2 folder `app/code/Magiccart/Testimonial`. Run following commands
+ 
+## Step 2: User guide
 
- ```
- php bin/magento setup:upgrade
- php bin/magento setup:static-content:deploy -f
- php bin/magento cache:flush
- ```
-
-# Step 2: User guide
-
-  ## 1. General configuration
+  ### 1. General configuration
 
   Login to magento admin, choose `stores->configuration->magiccart->testimonial`
   
@@ -40,7 +30,7 @@ php bin/magento setup:static-content:deploy -f
 * "Setting Slider":Setting style for testimonial such as testimonal slider, autoplay, speed, padding,...
 * "Setting Responsive": Setting testimonial responsive with different Screens.
   
-  ## 2. Manage Testimonial
+  ### 2. Manage Testimonial
   
    To manage Testimonials, please log in: `Admin > Magiccart > Testimonial`. It might look like this:
    
@@ -73,7 +63,7 @@ php bin/magento setup:static-content:deploy -f
    ```
    php bin/magento cache:clean
    ```
-  ## 3. Result
+  ### 3. Result
   ![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config45.png)
 
  ## Donation
