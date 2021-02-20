@@ -78,7 +78,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
             $data['autoplay-Speed'] = $data['autoplay_speed'];
             $data['swipe-To-Slide'] = 'true';
             $data['responsive'] = $responsive;
-            if(!isset($data['rows'])  || $data['rows'] == 1 ) $data['rows'] = 0;
+            // if(!isset($data['rows'])  || $data['rows'] == 1 ) $data['rows'] = 0;
         }
 
         $this->addData($data);
