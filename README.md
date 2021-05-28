@@ -1,6 +1,6 @@
 # Magento 2 testimonial
 
-**DEPRECATED: This repository is deprecated in favor of https://github.com/magepow/magento-2-testimonial
+**DEPRECATED: This repository is deprecated in favor of https://github.com/magepow/magento-2-testimonial**
 
 Testimonial magento 2 extension helps you to show list of testimonials on your website. All your vistors will know what others think about your website.
 
