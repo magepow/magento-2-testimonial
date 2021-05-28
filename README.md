@@ -12,6 +12,10 @@ php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
  
+[![Latest Stable Version](https://poser.pugx.org/magiccart/testimonial/v/stable)](https://packagist.org/packages/magiccart/testimonial)
+[![Total Downloads](https://poser.pugx.org/magiccart/testimonial/downloads)](https://packagist.org/packages/magiccart/testimonial)
+[![Daily Downloads](https://poser.pugx.org/magiccart/testimonial/d/daily)](https://packagist.org/packages/magiccart/testimonial)
+
 ## Step 2: User guide
 
   ### 1. General configuration
