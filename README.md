@@ -1,6 +1,42 @@
-# Magento 2 testimonial
+## Magento 2 testimonial
 
-Testimonial magento 2 extension helps you to show list of testimonials on your website. All your vistors will know what others think about your website.
+**Testimonial magento 2 extension** helps you to show list of testimonials on your website. All your vistors will know what others think about your website.
+
+  [![Image of magento admin config](https://github.com/magiccart/magento2-testimonial/blob/master/media/theme_config45.png)](https://magepow.com/magento-2-testimonial.html)
+
+### Description
+
+This plugin may sound like a website sales trick at first, but customer testimonials or reviews are one of the effective tools to increase your website's credibility.
+
+- Build customer trust: testimonials from others make customers trustworthy and demonstrate how satisfied they are with your service or product.
+
+- Show the strength of your team with completed projects: in the online world, customers are still hesitant to decide to use services/products/. Testimonials show customers the projects you've completed.
+
+- Show customers list: adding famous businesses in the market is the best way to introduce your website to users.
+
+### Features
+
+- Easy to install and configure
+
+- Add unlimited customer testimonials
+
+- Show list of reputable customers hàng
+
+- Customize title, slider
+
+- Design responsive to devices
+
+- Widgets support
+
+- Unlimited display position on the website
+
+See more demo, docs
+
+- [**Magento 2 Testimonial extension**](https://magepow.com/magento-2-testimonial.html)
+
+[![Latest Stable Version](https://poser.pugx.org/magiccart/testimonial/v/stable)](https://packagist.org/packages/magiccart/testimonial)
+[![Total Downloads](https://poser.pugx.org/magiccart/testimonial/downloads)](https://packagist.org/packages/magiccart/testimonial)
+[![Daily Downloads](https://poser.pugx.org/magiccart/testimonial/d/daily)](https://packagist.org/packages/magiccart/testimonial)
 
 ## Step 1 : Download Magento 2 Testimonial extension
 
@@ -12,9 +48,6 @@ php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
  
-[![Latest Stable Version](https://poser.pugx.org/magiccart/testimonial/v/stable)](https://packagist.org/packages/magiccart/testimonial)
-[![Total Downloads](https://poser.pugx.org/magiccart/testimonial/downloads)](https://packagist.org/packages/magiccart/testimonial)
-[![Daily Downloads](https://poser.pugx.org/magiccart/testimonial/d/daily)](https://packagist.org/packages/magiccart/testimonial)
 
 ## Step 2: User guide
 
