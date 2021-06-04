@@ -4,12 +4,12 @@ $selector = 'alo-content-'.uniqid();
 $testimonials = $this->getTestimonials();
 if(!count($testimonials)) return;
 ?>
-<div class="<?php echo $selector ?>">
+<div class="<?php echo $selector ?>" data-mage-init='{"gridSlider": {}}'>
    <div class="block-testimonial">
         <?php echo $this->getTitle() ? '<h3 class="block-title title item">' . '<span>' . $this->getTitle() . '</span>' . '</h3>' : '' ?>
 	</div>
    <div class="block-content">
-		<div class="testimonial center-mode"
+		<div class="testimonial center-mode grid-slider"
 		<?php foreach ($this->getFrontendCfg() as $opt) :?>
 			data-<?php echo $opt ?>='<?php echo $this->getData($opt) ?>'
 		<?php endforeach;?>
@@ -48,17 +48,7 @@ if(!count($testimonials)) return;
         var el  = $('.<?php echo $selector ?> .testimonial');
         if(!el.length) return;
 		var options = el.data();
-		var iClass = '.alo-item';
-		el.children().addClass(iClass);
-		iClass = '.alo-item';
-		var selector = el.selector;
-		var classes = selector + ' '+ iClass;
-		var padding = options.padding;
-		var slider;
-		var style = padding ? classes + '{float: left; padding-left: '+padding+'px; padding-right:'+padding+'px} ' + selector + '{margin-left: -'+padding+'px; margin-right: -'+padding+'px}' : '';
 		if(options.slidesToShow){
-			if(el.hasClass('slick-initialized')) el.slick("refresh");
-			else $(el).slick(options);
 			var caption = $('.<?php echo $selector ?> .testimonial-caption');
 			var testimonial_text = el.find('.slick-current.slick-center .testimonial_text');
 			if(testimonial_text.length) caption.html(testimonial_text.html());
@@ -66,7 +56,6 @@ if(!count($testimonials)) return;
 				testimonial_text = $(slick.$slides.get(currentSlide)).find('.testimonial_text');
 				if(testimonial_text.length) caption.html(testimonial_text.html());
 			});
-		} 
-		$('head').append('<style type="text/css">'+style+'</style>');
+		}
     });
 </script>

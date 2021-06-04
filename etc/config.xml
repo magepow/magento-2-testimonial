@@ -29,7 +29,7 @@
                 <center_mode>true</center_mode>
                 <dots>false</dots>
                 <fade>true</fade>
-                <rows>1</rows>
+                <rows>0</rows>
                 <speed>300</speed>
                 <autoplay_speed>3000</autoplay_speed>
                 <autoplay-Speed>3000</autoplay-Speed>
