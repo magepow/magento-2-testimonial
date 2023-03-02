@@ -1,3 +1,5 @@
+[<img src="https://github.com/magepow/themeforest/blob/master/shopify/shopify_affiliate.jpg" >](https://shopify.pxf.io/VyL446)
+
 ## Magento 2 testimonial
 
 **Testimonial magento 2 extension** helps you to show list of testimonials on your website. All your vistors will know what others think about your website.
