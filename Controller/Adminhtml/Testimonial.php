@@ -46,7 +46,7 @@ abstract class Testimonial extends \Magento\Backend\App\Action
     /**
      * @var \Magento\Backend\Model\View\Result\RedirectFactory
      */
-    protected $_resultRedirectFactory;
+    protected $resultRedirectFactory;
 
     protected $_testimonialFactory;
 
