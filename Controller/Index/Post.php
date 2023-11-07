@@ -19,7 +19,6 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Post extends \Magento\Framework\App\Action\Action
 {
-    
     /**
      * @var DataPersistorInterface
      */
@@ -37,15 +36,21 @@ class Post extends \Magento\Framework\App\Action\Action
     protected $_moduleHelper;
 
     /**
+     * @var \Magento\MediaStorage\Model\File\UploaderFactory
+     */
+    protected $_fileUploaderFactory;
+
+    /**
      * @param Context $context
+     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone
      * @param DataPersistorInterface $dataPersistor
      * @param LoggerInterface $logger
   
      */
     
     public function __construct(
-        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone,
         \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone,
         \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory,
         \Magiccart\Testimonial\Helper\Data $moduleHelper
     ) {
