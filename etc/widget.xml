@@ -12,7 +12,7 @@
  
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
     <widget id="magiccart_testimonial" class="Magiccart\Testimonial\Block\Widget\Testimonial">
-        <label translate="true">Testimonial Widget</label>
+        <label translate="true">Magiccart Testimonial Widget</label>
         <description translate="true"><![CDATA[Manage in Admin Panel > Magiccart > Testimonial > Testimonial. ]]></description>
         <parameters>
             <parameter name="template" xsi:type="select" required="true" visible="true">
