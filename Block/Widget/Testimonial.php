@@ -33,7 +33,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
     */
     protected $testimonialFactory;
 
-    protected $_testimonials;
+    protected $testimonials;
 
     /**
      * @var \Magiccart\Testimonial\Model\Config\Source\GridSlider
@@ -45,6 +45,15 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
      */ 
     public $helper;
 
+    /**
+     * Product collection factory
+     *
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    protected $productCollectionFactory;
+
+    public $abstractProduct;
+
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Image\AdapterFactory $imageFactory,
@@ -53,6 +62,8 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
         \Magiccart\Testimonial\Model\TestimonialFactory $testimonialFactory,
         \Magiccart\Testimonial\Model\Config\Source\GridSlider $gridSlider,
         \Magiccart\Testimonial\Helper\Data $helper,
+        \Magento\Catalog\Block\Product\ListProduct $abstractProduct,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
 
         array $data = []
     ) {
@@ -64,6 +75,8 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
         $this->testimonialFactory = $testimonialFactory;
         $this->gridSlider         = $gridSlider;
         $this->helper             = $helper;
+        $this->abstractProduct    = $abstractProduct;
+        $this->productCollectionFactory = $productCollectionFactory;
 
         parent::__construct($context, $data);
     }
@@ -133,16 +146,28 @@ class Testimonial extends \Magento\Framework\View\Element\Template implements \M
 
     public function getTestimonials()
     {
-        if(!$this->_testimonials){
+        if(!$this->testimonials){
             $store = $this->_storeManager->getStore()->getStoreId();
             $testimonials = $this->testimonialFactory->create()->getCollection()
                         ->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
                         ->addFieldToFilter('status', 1);
             $testimonials->getSelect()->order(array('order asc', 'testimonial_id desc'));
-            $this->_testimonials = $testimonials;
+            $this->testimonials = $testimonials;
         }
 
-        return $this->_testimonials;
+        return $this->testimonials;
+    }
+
+    public function getProducts($producIds){
+        $collection = $this->productCollectionFactory->create();
+        $collection->addAttributeToSelect('*')
+                    ->addAttributeToFilter('entity_id', ['in' => $producIds])
+                    ->addStoreFilter()
+                    ->addMinimalPrice()
+                    ->addFinalPrice()
+                    ->addTaxPercents();
+
+        return $collection;
     }
 
     public function getImage($object)

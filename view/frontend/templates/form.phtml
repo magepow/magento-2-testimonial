@@ -60,6 +60,23 @@ if(!$this->helper->getConfigModule('allowGuest') && !$customer) {
                     <input name="image" id="image" type="file" value="" class="required-entry" />
                 </div>
             </div>
+            <div class="field field-product">
+                <label for="product" class="label">
+                    <?php echo __('Product related'); ?>
+                </label>
+                <?php $options = $this->getProducts(); ?>
+                <div class="input-box">
+                    <!-- <input name="product" id="product" type="file" value="" class="required-entry" /> -->
+                    <select name="product" id="product">
+                        <option value=""><?php echo __('Select Product') ?></option>
+                        <?php 
+                            foreach ($options as $option){
+                                echo '<option value="' . $option->getId() . '">' . $option->getName() . '</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>
             <div class="field field-testimonial required">
                 <label for="testimonial" class="label">
                     <?php echo __('Your Testimonial'); ?>

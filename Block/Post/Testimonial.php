@@ -15,6 +15,11 @@ class Testimonial extends \Magento\Framework\View\Element\Template
 	protected $testimonialFactory;
 
 	/**
+	 * @var \Magiccart\Testimonial\Model\Config\Source\Product
+	 */
+	protected $product;
+
+	/**
 	 * @var \Magiccart\Testimonial\Helper\Data
 	 */
 	public $helper;
@@ -29,6 +34,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template
 		\Magento\Framework\View\Element\Template\Context $context,
 		\Magento\Customer\Model\Session $customerSession,
 		\Magiccart\Testimonial\Model\TestimonialFactory $testimonialFactory,
+		\Magiccart\Testimonial\Model\Config\Source\Product $product,
 		\Magiccart\Testimonial\Helper\Data $helper,
 
 		array $data = []
@@ -37,6 +43,7 @@ class Testimonial extends \Magento\Framework\View\Element\Template
 
 		$this->customerSession 	  = $customerSession;		
 		$this->testimonialFactory = $testimonialFactory;
+		$this->product 			  = $product;
 		$this->helper 			  = $helper;
 		$this->pageConfig->getTitle()->set(__('Submit Your Testimonial'));
 	}
@@ -68,6 +75,11 @@ class Testimonial extends \Magento\Framework\View\Element\Template
 		$collection->setOrderByTestimonial();
 
 		return $collection;
+	}
+
+	public function getProducts()
+	{
+		return $this->product->getProductCollection();
 	}
 
 	public function getStoreId()

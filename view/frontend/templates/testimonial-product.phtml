@@ -1,0 +1,97 @@
+<?php
+if(!$this->getEnabled()) return;
+$selector = 'alo-content-'.uniqid();
+$testimonials = $this->getTestimonials();
+if(!count($testimonials)) return;
+$productIds = [];
+foreach ($testimonials as $testimonial) {
+	$productIds[] = $testimonial->getData('product');
+}
+$products = $this->getProducts($productIds);
+?>
+<div class="<?php /* @escapeNotVerified */ echo $selector ?>" data-mage-init='{"gridSlider": {}}' >
+<?php /*
+   <div class="wrap-title d-flex flex-column align-items-center text-center mb-40 clear-both">
+        <?php echo $this->getTitle() ? '<h3 class="title">' . '<span>' . $this->escapeHtml($this->getTitle()) . '</span>' . '</h3>' : '' ?>
+	</div>
+	*/ ?>  
+   <div class="block-content">
+		<div class="testimonial grid-slider"
+		<?php foreach ($this->getFrontendCfg() as $opt) :?>
+			data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>'
+		<?php endforeach;?>  
+		>
+			<?php $i=0; foreach ($testimonials as $testimonial) :?>
+				<?php $product = $products->getItemById($testimonial->getData('product')); ?>
+				<div class="item">
+					<div class="inner-customer d-flex gap-30 align-items-center clearfix">
+						<div class="inner-left">
+							<div class="customer">
+								<a href="<?php echo $this->getUrl('testimonial'); ?>">
+									<img class="avatar img-responsive" src="<?php echo $this->escapeUrl($this->getImage($testimonial)) ?>" alt="<?php echo __($this->escapeHtml($testimonial->getName())) ?>" title="<?php echo __($this->escapeHtml($testimonial->getName())) ?>" />
+								</a>
+							</div>
+						</div>
+						<div class="inner-right">
+							<div class="product-reviews-summary short">
+								<div class="rating-summary">
+									<span class="label"><span><?php echo __('Rating')?>:</span></span>
+									<div class="rating-result" title="<?php echo ceil($testimonial->getRatingSummary() * 20) ?>%">
+										<span style="width:<?php echo ceil($testimonial->getRatingSummary() * 20) ?>%"><span><?php echo ceil($testimonial->getRatingSummary() * 20) ?>%</span></span>
+									</div>
+								</div>
+							</div>
+							<p class="title-name gap-10 d-flex mb-15 mb-lg-20">
+								<?php echo $this->escapeHtml($testimonial->getName()); ?>
+								<span class="job d-flex">
+									<svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M9.04948 0.151625C9.16233 0.0505415 9.29253 0 9.4401 0C9.59635 0 9.72656 0.0505415 9.83073 0.151625C9.94358 0.261131 10 0.391697 10 0.543321C10 0.686522 9.94358 0.808664 9.83073 0.909747L3.72396 6.84838C3.61979 6.94946 3.48958 7 3.33333 7C3.17708 7 3.04688 6.94946 2.94271 6.84838L0.169271 4.1444C0.0564236 4.04332 0 3.92118 0 3.77798C0 3.62635 0.0564236 3.49579 0.169271 3.38628C0.273438 3.2852 0.399306 3.23466 0.546875 3.23466C0.703125 3.23466 0.837674 3.2852 0.950521 3.38628L3.33333 5.69856L9.04948 0.151625Z" fill="#666666"/>
+										</svg>
+									<?php echo $this->escapeHtml($testimonial->getJob()); ?>
+								</span>
+							</p>
+							<div class="testimonial_text">
+								<?php if($product && $product->getId()): ?>
+								<?php 
+									$image = 'category_page_grid';
+								?>
+								
+								<?php endif; ?>
+								<div class="content  mb-15 mb-lg-20"><?php echo $this->escapeHtml($testimonial->getText()); ?></div>
+								<div class="company sub-text mb-5 mb-lg-10">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" id="svg3654" xml:space="preserve" width="18" height="18" viewBox="0 0 682.66669 682.66669"><defs id="defs3658"><clipPath clipPathUnits="userSpaceOnUse" id="clipPath3668"><path d="M 0,512 H 512 V 0 H 0 Z" id="path3666"/></clipPath></defs><g id="g3660" transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><g id="g3662"><g id="g3664" clip-path="url(#clipPath3668)"><g id="g3670" transform="translate(291.0713,18.9902)"><path d="m 0,0 h -223.305 v 371.968 c 0,10.428 6.659,19.69 16.543,23.012 L 0,464.48 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3672"/></g><g id="g3674" transform="translate(416.75,65.6499)"><path d="M 0,0 V -46.66 H -125.68 V 205.35 H 12.99 c 9.19,0 16.63,-7.44 16.63,-16.63 V 55.32" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3676"/></g><g id="g3678" transform="translate(291.0713,18.9902)"><path d="m 0,0 h 202.152 c 6.228,0 11.277,5.048 11.277,11.276 V 46.658 H 0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3680"/></g><g id="g3682" transform="translate(458.5078,122.7744)"><path d="m 0,0 h 4.234 c 23.062,0 41.758,-18.696 41.758,-41.758 v -15.368 h -87.75 v 15.368 C -41.758,-18.696 -23.062,0 0,0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3684"/></g><g id="g3686" transform="translate(18.7764,18.9902)"><path d="M 0,0 H 48.99 V 46.658 H -11.276 V 11.276 C -11.276,5.048 -6.228,0 0,0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3688"/></g><g id="g3690" transform="translate(61.8696,122.7744)"><path d="M 0,0 H 5.897 V -57.126 H -54.37 v 2.756 C -54.37,-24.342 -30.027,0 0,0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3692"/></g><g id="g3694" transform="translate(368.7231,271.0049)"><path d="M 0,0 H -77.652 V 212.466 L -7.404,144.563 C -2.672,139.989 0,133.689 0,127.107 V 35.354" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3696"/></g><g id="g3698" transform="translate(122.3901,426.77)"><path d="m 0,0 v 50.65 c 0,8.61 6.98,15.59 15.6,15.59 h 1.58 c 8.61,0 15.59,-6.98 15.59,-15.59 V 11.02" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3700"/></g><g id="g3702" transform="translate(291.0698,426.7798)"><path d="M 0,0 -168.68,-56.7" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3704"/></g><g id="g3706" transform="translate(291.0698,372.7998)"><path d="M 0,0 -168.68,-56.7" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3708"/></g><g id="g3710" transform="translate(291.0698,318.8198)"><path d="M 0,0 -168.68,-56.7" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3712"/></g><g id="g3714" transform="translate(291.0698,264.8398)"><path d="M 0,0 -168.68,-56.7" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3716"/></g><g id="g3718" transform="translate(150.2363,163.5205)"><path d="M 0,0 -27.846,-9.36" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3720"/></g><g id="g3722" transform="translate(291.0698,210.8599)"><path d="M 0,0 -107.247,-36.05" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3724"/></g><g id="g3726" transform="translate(211.2773,18.9902)"><path d="m 0,0 h -88.886 v 63.715 c 0,4.94 3.29,9.275 8.048,10.603 l 69.807,19.488 C -5.489,95.354 0,91.187 0,85.433 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3728"/></g><g id="g3730" transform="translate(404.9683,209.1401)"><path d="m 0,0 h -73.551 c -2.843,0 -5.148,2.305 -5.148,5.148 v 18.053 c 0,2.844 2.305,5.149 5.148,5.149 H 0 c 2.844,0 5.149,-2.305 5.149,-5.149 V 5.148 C 5.149,2.305 2.844,0 0,0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3732"/></g><g id="g3734" transform="translate(404.9683,152.1099)"><path d="m 0,0 h -73.551 c -2.843,0 -5.148,2.305 -5.148,5.149 v 18.053 c 0,2.843 2.305,5.148 5.148,5.148 H 0 c 2.844,0 5.149,-2.305 5.149,-5.148 V 5.149 C 5.149,2.305 2.844,0 0,0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3736"/></g><g id="g3738" transform="translate(355.7451,94.4971)"><path d="m 0,0 h -24.328 c -2.843,0 -5.148,2.305 -5.148,5.148 v 18.053 c 0,2.844 2.305,5.149 5.148,5.149 H 0 c 2.844,0 5.149,-2.305 5.149,-5.149 V 5.148 C 5.149,2.305 2.844,0 0,0 Z" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3740"/></g><g id="g3742" transform="translate(166.8345,103.4688)"><path d="M 0,0 V -84.479" style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3744"/></g></g></g></g></svg>
+								<?php echo $this->escapeHtml($testimonial->getCompany()); ?>
+								</div>
+								<div class="Email sub-text">
+									<a href="<?php echo $this->escapeHtml($testimonial->getEmail()); ?>">
+									<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" height="18" viewBox="0 0 125 125" width="18" data-name="Layer 1"><path d="m105.182 97.82h-85.364a10.477 10.477 0 0 1 -10.465-10.466v-52.72a10.477 10.477 0 0 1 10.465-10.466h85.364a10.477 10.477 0 0 1 10.465 10.466v52.72a10.477 10.477 0 0 1 -10.465 10.466zm-85.364-69.652a6.472 6.472 0 0 0 -6.465 6.466v52.72a6.472 6.472 0 0 0 6.465 6.466h85.364a6.472 6.472 0 0 0 6.465-6.466v-52.72a6.472 6.472 0 0 0 -6.465-6.466z"/><path d="m62.5 72.764a2 2 0 0 1 -1.324-.5l-48.2-42.548 2.647-3 46.877 41.384 46.879-41.379 2.647 3-48.2 42.548a1.994 1.994 0 0 1 -1.326.495z"/><path d="m5.012 72.393h49.061v4h-49.061z" transform="matrix(.66 -.752 .752 .66 -45.859 47.529)"/><path d="m93.454 49.862h4v49.062h-4z" transform="matrix(.752 -.66 .66 .752 -25.361 81.43)"/></svg>
+									<?php echo $this->escapeHtml($testimonial->getEmail()); ?>
+									</a>
+								</div>
+								<?php if ($product && $product->getId()): ?>
+								<div class="d-flex gap-15 align-items-center border-t pt-15 pt-lg-20">
+									<div class="image-product">
+										<a href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>" class="product-item-photo">
+											<?= $this->abstractProduct->getImage($product, $image)->toHtml()?>
+										</a>
+									</div>
+									<div class="details-container">
+									<h3 class="product-item-name mb-5">
+										<a class="product-item-link" href="<?php echo $product->getProductUrl() ?>">
+											<?php echo $this->escapeHtml($product->getName()) ?>
+										</a>
+										</h3>
+										<?= $this->abstractProduct->getProductPrice($product) ?>
+									</div>
+								</div>
+								<?php endif; ?>
+							</div>
+						</div>
+						
+					</div>
+					 
+				</div>
+			<?php endforeach ?>
+		</div>
+	</div>
+</div>

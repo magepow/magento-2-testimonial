@@ -23,7 +23,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      * @var \Magiccart\Testimonial\Model\Testimonial
      */
 
-    protected $_testimonial;
+    protected $testimonial;
 
     /**
      * @var \Magento\Store\Model\System\Store
@@ -51,10 +51,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
         \Magento\Review\Helper\Data $reviewData,
         \Magiccart\Testimonial\Model\Testimonial $testimonial,
+        \Magiccart\Testimonial\Model\Config\Source\Product $product,
         array $data = []
     ) {
         $this->_objectFactory = $objectFactory;
-        $this->_testimonial = $testimonial;
+        $this->testimonial = $testimonial;
+        $this->product 	   = $product;
         $this->_systemStore = $systemStore;
         $this->_wysiwygConfig = $wysiwygConfig;
         $this->_reviewData = $reviewData;
@@ -110,6 +112,16 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldset->addField('product', 'select',
+            [
+                'label' => __('Product'),
+                'title' => __('Product'),
+                'name'  => 'product',
+                'values'=> $this->product->toOptionArray(),
+                'required' => false,
+            ]
+        );
+        
         $fieldset->addField('text', 'editor',
             [
                 'label' => __('Text'),
@@ -176,6 +188,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                     'label' => __('Store View'),
                     'title' => __('Store View'),
                     'required' => true,
+                    'value' => 0,
                     'values' => $this->_systemStore->getStoreValuesForForm(false, true)
                 ]
             );
