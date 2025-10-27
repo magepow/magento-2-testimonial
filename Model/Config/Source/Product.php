@@ -36,7 +36,7 @@ class Product
     {
 
         $collection = $this->productCollection->create();
-        $collection->addAttributeToSelect('name');
+        $collection->addAttributeToSelect(['name', 'sku']);
         $collection->setVisibility($this->catalogProductVisibility->getVisibleInCatalogIds());
 
         return $collection;
@@ -50,7 +50,7 @@ class Product
             foreach ($products as $product) {
                 $options[] = [
                     'value' => $product->getId(),
-                    'label' => $product->getName()
+                    'label' => 'ID(' . $product->getId() . ') -> ' .  $product->getName()
                 ];
             }
         }
