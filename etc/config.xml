@@ -17,7 +17,7 @@
                 <title>Testimonials</title>
                 <topLink>1</topLink>
                 <customers_submit>1</customers_submit>
-                <allowGuest>1</allowGuest>
+                <allowGuest>0</allowGuest>
                
                 <autoApprove>1</autoApprove>
                 <per_page>2</per_page>

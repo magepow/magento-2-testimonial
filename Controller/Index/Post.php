@@ -77,6 +77,16 @@ class Post extends \Magento\Framework\App\Action\Action
                     );
                     $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
 
+                    /*
+                     * Verify the real file content before the image adapter opens it.
+                     * The extension alone is not trusted: libmagic reports a PostScript
+                     * payload disguised as an image as application/postscript, which
+                     * keeps it away from ImageMagick/Ghostscript.
+                     */
+                    if (!$uploader->checkMimeType(['image/jpeg', 'image/png', 'image/gif'])) {
+                        throw new LocalizedException(__('File validation failed.'));
+                    }
+
                     /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapter */
                     $imageAdapter = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')->create();
                     $uploader->addValidateCallback('testimonial_image', $imageAdapter, 'validateUploadFile');
